@@ -39,18 +39,12 @@ const deleteTransactionById = (req, res) => {
     res.json({ transactions: newTransactionsData })
 }
 // ---- HTTP Routes ----
-transactions.get('/', getAllTransactions);
-
+transactions.route('/')
+    .get(getAllTransactions)
+    .post(createTransaction);
 
 transactions.get('/:id', getTransactionById);
-
-
-transactions.post('/', createTransaction)
-
-
 transactions.put('/:id', updateTransactionById);
-
-
 transactions.delete('/:id', deleteTransactionById)
 
 module.exports = transactions;
