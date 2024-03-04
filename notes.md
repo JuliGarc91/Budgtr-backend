@@ -59,3 +59,8 @@ curl -X delete http://localhost:8888/transactions/6
 ```
 output in broswer is now:
 
+```js
+{
+"message": "Transaction with ID 6 not found. :'-("
+}
+```

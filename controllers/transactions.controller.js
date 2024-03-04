@@ -38,13 +38,14 @@ const deleteTransactionById = (req, res) => {
     const newTransactionsData = transactionsData.filter((transaction) => transaction.id !== +id); // used to return everything except the one with matching id
     res.json({ transactions: newTransactionsData })
 }
+
 // ---- HTTP Routes ----
 transactions.route('/')
     .get(getAllTransactions)
     .post(createTransaction);
 
 transactions.route('/:id')
-    .get( getTransactionById)
+    .get(getTransactionById)
     .put(updateTransactionById)
     .delete(deleteTransactionById);
 
