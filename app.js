@@ -4,7 +4,7 @@ const cors = require('cors');
 // config
 const app = express();
 
-const transactionsController = require('./controllers/logs.controller');
+const transactionsController = require('./controllers/transactions.controller');
 
 //middleware packges
 app.use(cors());
