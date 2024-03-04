@@ -31,6 +31,10 @@ transactions.put('/:id', (req, res) => {
     res.json({ transactions: transactionsData });
 });
 
-
+transactions.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    const newTransactionsData = transactionsData.filter((transaction) => transaction.id !== +id); // used to return everything except the one with matching id
+    res.json({ transactions: newTransactionsData })
+})
 
 module.exports = transactions;
