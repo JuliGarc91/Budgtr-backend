@@ -2,10 +2,13 @@ const express = require('express');
 const transactions = express.Router();
 const transactionsData = require("../models/transactions.model");
 
-// get all transactions - can be viewed in Browser
-transactions.get('/',(req,res)=>{
+// http fx get all transactions - can be viewed in Browser
+const getAllTransactions = (req,res) => {
     res.status(200).json({transactions: transactionsData})
-});
+};
+
+// http Route
+transactions.get('/', getAllTransactions);
 
 // get one transaction by id - can be viewed in Browser
 transactions.get('/:id', (req,res) => {
