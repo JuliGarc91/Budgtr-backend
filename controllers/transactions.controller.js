@@ -13,4 +13,13 @@ transactions.get('/:id', (req,res) => {
     selectedTransaction ? res.status(200).json(selectedTransaction) : res.status(400).json({ message: `Transaction with ID ${id} not found. :'-(` })
 });
 
+// test with cURL
+transactions.post('/', (req, res) => {
+    const newId = transactionsData[transactionsData.length -1].id + 1;
+    req.body.id = newId;
+    transactionsData.push(req.body);
+    res.json({ transactions: transactionsData });
+})
+
+
 module.exports = transactions;
