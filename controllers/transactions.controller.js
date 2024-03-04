@@ -43,8 +43,9 @@ transactions.route('/')
     .get(getAllTransactions)
     .post(createTransaction);
 
-transactions.get('/:id', getTransactionById);
-transactions.put('/:id', updateTransactionById);
-transactions.delete('/:id', deleteTransactionById)
+transactions.route('/:id')
+    .get( getTransactionById)
+    .put(updateTransactionById)
+    .delete(deleteTransactionById);
 
 module.exports = transactions;
