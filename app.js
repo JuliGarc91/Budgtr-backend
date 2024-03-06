@@ -6,7 +6,7 @@ const app = express();
 
 const transactionsController = require('./controllers/transactions.controller');
 
-//middleware packges
+//middleware packages
 app.use(cors());
 app.use(express.json());
 
@@ -20,4 +20,5 @@ app.use('/transactions', transactionsController);
 app.get('*',(req,res) => {
     res.status(404).json({ error: "Page not found :-(" })
 })
+
 module.exports = app;
