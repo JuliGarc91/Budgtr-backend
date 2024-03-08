@@ -1,6 +1,6 @@
 const express = require('express');
 const transactions = express.Router();
-const transactionsData = require("../models/transactions.model");
+let transactionsData = require("../models/transactions.model");
 
 // ---- HTTP Functions ----
 // http fx get all transactions - can be viewed in Browser
@@ -17,7 +17,8 @@ const getTransactionById = (req,res) => {
 
 // create resource and add unique id to it - test with cURL
 const createTransaction = (req, res) => {
-    const newId = transactionsData[transactionsData.length -1].id + 1;
+    
+    const newId = transactionsData.length > 0 ? transactionsData[transactionsData.length -1].id + 1 : 1;
     req.body.id = newId;
     transactionsData.push(req.body);
     res.json({ transactions: transactionsData });
@@ -35,8 +36,8 @@ const updateTransactionById = (req, res) => {
 // delete transaction by id
 const deleteTransactionById = (req, res) => {
     const { id } = req.params;
-    const newTransactionsData = transactionsData.filter((transaction) => transaction.id !== +id); // used to return everything except the one with matching id
-    res.json({ transactions: newTransactionsData })
+    transactionsData = transactionsData.filter((transaction) => transaction.id !== +id); // used to return everything except the one with matching id
+    res.json({ transactions: transactionsData })
 }
 
 // ---- HTTP Routes ----
