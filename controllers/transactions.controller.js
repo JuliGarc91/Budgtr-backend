@@ -25,7 +25,7 @@ const createTransaction = (req, res) => {
     res.json({ transactions: transactionsData });
 }
 
-// update resource by id - test with cURL
+//update resource by id - test with cURL
 const updateTransactionById = (req, res) => {
     const { id } = req.params;
     const transactionIndex = transactionsData.findIndex((transaction) => transaction.id === +id);

@@ -124,7 +124,7 @@ explanation of fx:
 
 `date.getMonth() + 1`: Since the `getMonth()` method returns a zero-based index, we add 1 to it to get the actual month number. (January is 1 for example)
 
-then turn it to string so it's not a number (for the server) using `String()`
+then turn it to string so it's not a number using `String()` to be able to use `padStart()`
 
 `padStart()` makes it so that it is always 2 characters long (it's a string method that's kind of like `toFixed()` except this is for formatting numbers to have digits after a decimal point (and it turns the number to a string but `padStart()` is only for strings)
 
