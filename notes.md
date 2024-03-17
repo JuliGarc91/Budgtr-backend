@@ -136,4 +136,22 @@ An integer representing the year for the given date according to local time. Ret
 Description:
 Unlike `getYear()` (which is deprecated because it doesn't return full years), the value returned by getFullYear() is an absolute number. For dates between the years 1000 and 9999, `getFullYear()` returns a four-digit number, for example, 1995. Use this function to make sure a year is compliant with years after 2000.
 
+Formatting the date alt:
 
+
+const formatDateForServer = () => {
+      if (!transaction.date) {
+        return ''; // Return an empty string if transaction date is falsy
+      }
+      console.log(transaction.date) // not falsy but not correct format (format in backend)
+      const date = new Date(transaction.date); // Parse transaction date
+      console.log(date)
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date:', transaction.date);
+        return ''; // Return an empty string if date is invalid
+      }
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    };    

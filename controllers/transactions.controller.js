@@ -20,7 +20,6 @@ const createTransaction = (req, res) => {
     
     const newId = transactionsData.length > 0 ? transactionsData[transactionsData.length -1].id + 1 : 1;
     req.body.id = newId;
-    req.body.date = new Date(req.body.date); // Convert date string to Date object
     transactionsData.push(req.body);
     res.json({ transactions: transactionsData });
 }
