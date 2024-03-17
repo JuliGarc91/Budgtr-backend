@@ -138,7 +138,7 @@ Unlike `getYear()` (which is deprecated because it doesn't return full years), t
 
 Formatting the date alt:
 
-
+```js
 const formatDateForServer = () => {
       if (!transaction.date) {
         return ''; // Return an empty string if transaction date is falsy
@@ -155,3 +155,4 @@ const formatDateForServer = () => {
       const day = date.getDate();
       return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     };    
+```
