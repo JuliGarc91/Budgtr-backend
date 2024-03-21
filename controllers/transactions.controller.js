@@ -30,7 +30,10 @@ const updateTransactionById = (req, res) => {
     const { id } = req.params;
     const transactionIndex = transactionsData.findIndex((transaction) => transaction.id === +id);
     // if not falsy
-    if (transactionIndex > -1) transactionsData[transactionIndex] = req.body; // in frontend setTransaction data (useState hook) will reset the state of the data so the data needs to be sent back
+    if (transactionIndex > -1) {
+        req.body.id = +id;
+        transactionsData[transactionIndex] = req.body; // in frontend setTransaction data (useState hook) will reset the state of the data so the data needs to be sent back
+    }
     res.json({ transactions: transactionsData });
 }
 
