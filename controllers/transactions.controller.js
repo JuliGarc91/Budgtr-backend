@@ -17,13 +17,12 @@ transactions.get("/:id", (req,res) => {
 });
 
 // create resource and add unique id to it - test with cURL
-const createTransaction = (req, res) => {
-    
+transactions.post("/", (req, res) => {
     const newId = transactionsData.length > 0 ? transactionsData[transactionsData.length -1].id + 1 : 1;
     req.body.id = newId;
     transactionsData.push(req.body);
     res.json({ transactions: transactionsData });
-}
+});
 
 //update resource by id - test with cURL
 const updateTransactionById = (req, res) => {
@@ -45,8 +44,6 @@ const deleteTransactionById = (req, res) => {
 }
 
 // ---- HTTP Routes ----
-transactions.route('/')
-    .post(createTransaction);
 
 transactions.route('/:id')
     .put(updateTransactionById)
