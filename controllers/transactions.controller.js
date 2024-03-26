@@ -5,9 +5,9 @@ const validateForm = require("../validations/validateForm");
 
 // ---- HTTP Functions ----
 // http fx get all transactions - can be viewed in Browser
-const getAllTransactions = (req,res) => {
+transactions.get("/",(req,res) => {
     res.status(200).json({transactions: transactionsData})
-};
+});
 
 // get one transaction by id - can be viewed in Browser
 const getTransactionById = (req,res) => {
@@ -46,7 +46,6 @@ const deleteTransactionById = (req, res) => {
 
 // ---- HTTP Routes ----
 transactions.route('/')
-    .get(getAllTransactions)
     .post(createTransaction);
 
 transactions.route('/:id')
