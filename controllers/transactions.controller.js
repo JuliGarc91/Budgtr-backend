@@ -37,15 +37,10 @@ transactions.put("/:id", (req, res) => {
 });
 
 // delete transaction by id
-const deleteTransactionById = (req, res) => {
+transactions.delete("/:id",(req, res) => {
     const { id } = req.params;
     transactionsData = transactionsData.filter((transaction) => transaction.id !== +id); // used to return everything except the one with matching id
     res.json({ transactions: transactionsData })
-}
-
-// ---- HTTP Routes ----
-
-transactions.route('/:id')
-    .delete(deleteTransactionById);
+});
 
 module.exports = transactions;
