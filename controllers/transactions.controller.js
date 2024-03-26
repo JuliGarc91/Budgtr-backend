@@ -25,7 +25,7 @@ transactions.post("/", (req, res) => {
 });
 
 //update resource by id - test with cURL
-const updateTransactionById = (req, res) => {
+transactions.put("/:id", (req, res) => {
     const { id } = req.params;
     const transactionIndex = transactionsData.findIndex((transaction) => transaction.id === +id);
     // if not falsy
@@ -34,7 +34,7 @@ const updateTransactionById = (req, res) => {
         transactionsData[transactionIndex] = req.body; // in frontend setTransaction data (useState hook) will reset the state of the data so the data needs to be sent back
     }
     res.json({ transactions: transactionsData });
-}
+});
 
 // delete transaction by id
 const deleteTransactionById = (req, res) => {
@@ -46,7 +46,6 @@ const deleteTransactionById = (req, res) => {
 // ---- HTTP Routes ----
 
 transactions.route('/:id')
-    .put(updateTransactionById)
     .delete(deleteTransactionById);
 
 module.exports = transactions;
