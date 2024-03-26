@@ -10,11 +10,11 @@ transactions.get("/",(req,res) => {
 });
 
 // get one transaction by id - can be viewed in Browser
-const getTransactionById = (req,res) => {
+transactions.get("/:id", (req,res) => {
     const { id } = req.params;
     const selectedTransaction = transactionsData.find(transaction => transaction.id === +id);
     selectedTransaction ? res.status(200).json(selectedTransaction) : res.status(400).json({ message: `Transaction with ID ${id} not found. :'-(` })
-}
+});
 
 // create resource and add unique id to it - test with cURL
 const createTransaction = (req, res) => {
@@ -49,7 +49,6 @@ transactions.route('/')
     .post(createTransaction);
 
 transactions.route('/:id')
-    .get(getTransactionById)
     .put(updateTransactionById)
     .delete(deleteTransactionById);
 
